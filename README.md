@@ -12,7 +12,7 @@ It is build around ease of use, when you just need a single functionality.
 
 ## Config
 
-Install with `npm i auth0-socketio`
+Install with `npm i auth0-socketio` or visit the [NPM package webpage](https://www.npmjs.com/package/auth0-socketio)
 
 ## Usage
 
@@ -58,6 +58,21 @@ const socket = io({
 You can then access the token from the server side, that is what `auth0-socketio` exactly does.
 
 It will validate the token against your `domain` and (optionally `audience`) returning an `Error` if the token is not valid or failed to be verified.
+
+### Validate Audience
+
+To validate claims against an `audience` use it as second parameter:
+
+```typescript
+import { Server } from 'socket.io';
+import auth0Middleware from 'auth0-socketio';
+
+const io = new Server();
+
+const withAuthorization = auth0Middleware('example-co.au.auth0.com','example-audience);
+
+io.use(withAuthorization);
+```
 
 ### Environment variables
 

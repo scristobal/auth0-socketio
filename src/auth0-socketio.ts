@@ -53,7 +53,7 @@ const auth0Middleware: SocketIOMiddlewareFactory = (domainParam?: string, audien
         try {
             const { payload, protectedHeader } = await jwtVerify(jwt, JWKS, {
                 issuer: `https://${domain}/`,
-                audience: audience
+                audience: audience,
             });
 
             socket.auth = { user: payload, header: protectedHeader };
@@ -65,4 +65,4 @@ const auth0Middleware: SocketIOMiddlewareFactory = (domainParam?: string, audien
     };
 };
 
-export { auth0Middleware };
+export default auth0Middleware;
