@@ -1,6 +1,6 @@
 {
     "name": "auth0-socketio",
-    "version": "1.0.3",
+    "version": "1.1.0",
     "description": "A near-zero config middleware to use Auth0 JWT on your Socket.IO server",
     "main": "build/index.js",
     "type": "module",
