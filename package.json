@@ -32,9 +32,7 @@
 	"homepage": "https://github.com/scristobal/auth0-socketio#readme",
 	"dependencies": {
 		"dotenv": "^16.0.0",
-		"jose": "^4.4.0",
-		"onchange": "^7.1.0",
-		"prettier": "^2.7.1"
+		"jose": "^4.4.0"
 	},
 	"devDependencies": {
 		"@tsconfig/recommended": "^1.0.1",
@@ -49,6 +47,8 @@
 		"ts-jest": "^27.1.3",
 		"tsc-watch": "^4.6.0",
 		"tslib": "^2.3.1",
-		"typescript": "^4.5.5"
+		"typescript": "^4.5.5",
+		"onchange": "^7.1.0",
+		"prettier": "^2.7.1"
 	}
 }
