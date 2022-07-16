@@ -40,18 +40,18 @@ Follow [Socket.IO documentation](https://socket.io/docs/v4/middlewares/#sending-
 ```javascript
 // plain object
 const socket = io({
-    auth: {
-        token: 'abc',
-    },
+	auth: {
+		token: 'abc'
+	}
 });
 
 // or with a function
 const socket = io({
-    auth: (cb) => {
-        cb({
-            token: 'abc',
-        });
-    },
+	auth: (cb) => {
+		cb({
+			token: 'abc'
+		});
+	}
 });
 ```
 
