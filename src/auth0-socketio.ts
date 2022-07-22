@@ -28,6 +28,14 @@ const auth0Middleware: SocketIOMiddlewareFactory = (domainParam?: string, audien
 		);
 	}
 
+	const JWKS = createRemoteJWKSet(new URL(`https://${domain}/.well-known/jwks.json`));
+
+	const config: JWTVerifyOptions = { issuer: `https://${domain}/` };
+
+	if (audience !== undefined) {
+		config.audience = audience;
+	}
+
 	return async function (socket, next) {
 		const { token: authHandshakeToken } = socket.handshake.auth;
 
@@ -48,14 +56,6 @@ const auth0Middleware: SocketIOMiddlewareFactory = (domainParam?: string, audien
 		const jwt = authHandshakeTokenSplitted[1];
 
 		try {
-			const JWKS = createRemoteJWKSet(new URL(`https://${domain}/.well-known/jwks.json`));
-
-			const config: JWTVerifyOptions = { issuer: `https://${domain}/` };
-
-			if (audience !== undefined) {
-				config.audience = audience;
-			}
-
 			const { payload, protectedHeader } = await jwtVerify(jwt, JWKS, config);
 
 			socket.auth = { user: payload, header: protectedHeader };
